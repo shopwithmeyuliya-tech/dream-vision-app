@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DREAM PULSE | CDTV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">CD</div>
+          <div>
+            <div class="brand-name">Channel Dreams TV</div>
+            <div class="brand-subtitle">Open emotional learning</div>
+          </div>
+        </div>
+        <button class="ghost-button">Open source vision</button>
+      </header>
+
+      <main class="page-grid">
+        <section class="left-column">
+          <div class="hero-card">
+            <p class="eyebrow">DREAM PULSE</p>
+            <h1>What the world is dreaming tonight.</h1>
+
+            <div class="pulse-box">
+              <div class="pulse-row">
+                <span>1. Ocean</span>
+                <span class="trend-value">↑ 42%</span>
+              </div>
+              <div class="pulse-row">
+                <span>2. Losing teeth</span>
+                <span class="trend-value">↑ 31%</span>
+              </div>
+              <div class="pulse-row">
+                <span>3. Flying</span>
+                <span class="trend-value">↑ 27%</span>
+              </div>
+              <div class="pulse-row">
+                <span>4. Stranger</span>
+                <span class="trend-value">↑ 19%</span>
+              </div>
+              <div class="pulse-row">
+                <span>5. Old home</span>
+                <span class="trend-value">↑ 14%</span>
+              </div>
+            </div>
+
+            <div class="stats-row">
+              <strong>12,846</strong>
+              <span>dreams analyzed</span>
+            </div>
+
+            <div class="hero-actions">
+              <button class="primary-button" id="focusFormButton">Share a dream</button>
+              <button class="secondary-button" id="scrollFeedButton">Explore the feed</button>
+            </div>
+          </div>
+
+          <div class="panel form-panel" id="dreamFormPanel">
+            <div class="panel-header">
+              <h2>Share your dream</h2>
+              <span class="badge">Live story</span>
+            </div>
+
+            <form id="dreamForm">
+              <div class="field-row">
+                <input id="dreamTitle" type="text" placeholder="Title for your dream" />
+                <select id="dreamPrivacy">
+                  <option value="public">Public</option>
+                  <option value="friends">Friends</option>
+                  <option value="private">Private</option>
+                </select>
+              </div>
+
+              <textarea id="dreamContent" rows="7" placeholder="Describe what you dreamt, what you felt, and what it may be showing you..."></textarea>
+
+              <div class="form-footer">
+                <span class="hint">This app is reflective and educational, not a diagnosis.</span>
+                <button class="primary-button" type="submit">Publish dream</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <aside class="right-column">
+          <div class="panel insight-panel">
+            <div class="panel-header">
+              <h2>Community learning</h2>
+              <span class="badge soft">Live insights</span>
+            </div>
+            <p id="communityMessage" class="insight-text"></p>
+            <ul id="insightList" class="trend-list"></ul>
+          </div>
+
+          <div class="panel mini-panel">
+            <div class="panel-header">
+              <h2>Similar dreams</h2>
+              <span class="badge soft">Match</span>
+            </div>
+            <div id="similarDreams" class="similar-list"></div>
+          </div>
+        </aside>
+      </main>
+
+      <section id="feedSection" class="feed-section">
+        <div class="section-title-row">
+          <h2>Dream feed</h2>
+          <span class="badge soft">Open stories</span>
+        </div>
+        <div id="dreamFeed" class="dream-feed"></div>
+      </section>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
