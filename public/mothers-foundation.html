@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dream Mothers Foundation · Channel Dreams TV</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { margin: 0; background-color: #111827; color: #f1f5f9; font-family: system-ui, sans-serif; }
+    main { max-width: 44rem; margin: auto; padding: 1.5rem; }
+    a { color: #a5f3fc; }
+    section { margin: 1rem 0; padding: 1.2rem; border: 1px solid #475569; border-radius: 1rem; }
+    label { display: block; margin: 1rem 0; }
+    input { display: block; margin-top: .3rem; padding: .5rem; width: 100%; box-sizing: border-box; font: inherit; }
+    output { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="index.html">Channel Dreams TV</a>
+    <p>Chapter 33</p>
+    <h1>Dream Mothers Foundation</h1>
+    <p>Измените сумму или процент, чтобы обсудить варианты с командой. Это пример расчёта. Деньги не переводятся.</p>
+    <section class="panel" data-calculator>
+      <h2>Поддержка мам команды</h2>
+      <label>Прибыль после налогов, € <input id="fund-amount" type="number" inputmode="decimal" min="0" max="999999999999" step="0.01" required value="100000"></label>
+      <label>Предлагаемый процент <input id="fund-rate" type="number" inputmode="decimal" min="0" max="100" step="0.01" required value="5"></label>
+      <p>Плановый бюджет фонда <output for="fund-amount fund-rate" aria-live="polite"></output></p>
+    </section>
+    <section class="panel" data-calculator>
+      <h2>Мама основательницы</h2>
+      <label>Общая сумма, выделенная на дивиденды, € <input id="mother-amount" type="number" inputmode="decimal" min="0" max="999999999999" step="0.01" required value="20000"></label>
+      <label>Предлагаемый процент <input id="mother-rate" type="number" inputmode="decimal" min="0" max="100" step="0.01" required value="25"></label>
+      <p>Предлагаемая сумма для мамы <output for="mother-amount mother-rate" aria-live="polite"></output></p>
+    </section>
+    <noscript>Чтобы увидеть результат, включите JavaScript в браузере.</noscript>
+  </main>
+  <script>
+    const euros = new Intl.NumberFormat('ru-RU', { style: 'currency', currency: 'EUR' });
+    for (const panel of document.querySelectorAll('[data-calculator]')) {
+      const [amount, rate] = panel.querySelectorAll('input');
+      const output = panel.querySelector('output');
+      function update() {
+        if (!amount.validity.valid || !rate.validity.valid) {
+          output.value = 'Введите сумму от 0 до 999 999 999 999 € и процент от 0 до 100, до двух знаков после запятой.';
+          return;
+        }
+        const cents = BigInt(Math.round(amount.valueAsNumber * 100));
+        const basisPoints = BigInt(Math.round(rate.valueAsNumber * 100));
+        const allocatedCents = (cents * basisPoints + 5000n) / 10000n;
+        output.value = euros.format(Number(allocatedCents) / 100);
+      }
+      panel.addEventListener('input', update);
+      update();
+    }
+  </script>
+</body>
+</html>
